@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>QueueTube</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      width: 320px;
+      padding: 0;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .header {
+      padding: 16px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .header h3 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .subtitle {
+      font-size: 12px;
+      opacity: 0.9;
+      margin: 0;
+    }
+    
+    .content {
+      padding: 16px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .status {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    
+    .main-button {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      background-color: #ff4757;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+      margin-bottom: 12px;
+    }
+    
+    .main-button:hover {
+      background-color: #ff3742;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(255, 71, 87, 0.4);
+    }
+    
+    .main-button:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .settings-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .toggle.active {
+      background: #2ed573;
+    }
+    
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    
+    .toggle.active::after {
+      transform: translateX(20px);
+    }
+    
+    .history-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .channel-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .channel-name {
+      flex: 1;
+      truncate: ellipsis;
+      overflow: hidden;
+    }
+    
+    .channel-actions {
+      display: flex;
+      gap: 4px;
+    }
+    
+    .small-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .small-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .stats {
+      font-size: 11px;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+    
+    .tabs {
+      display: flex;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+    
+    .tab {
+      flex: 1;
+      padding: 8px 4px;
+      text-align: center;
+      font-size: 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    
+    .tab.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .clear-btn {
+      background: #ff4757;
+      border: none;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h3>🎬 QueueTube</h3>
+    <p class="subtitle">Channel Playlist Generator</p>
+  </div>
+  
+  <div class="content">
+    <div class="status">
+      <div id="status">Navigate to any YouTube channel page to begin.</div>
+    </div>
+    
+    <button id="createPlaylistBtn" class="main-button">🚀 Create QueueTube Playlist</button>
+    
+    <div class="tabs">
+      <div class="tab active" data-tab="settings">Settings</div>
+      <div class="tab" data-tab="history">History</div>
+    </div>
+    
+    <div id="settings-tab" class="tab-content active">
+      <div class="setting-row">
+        <span>Skip watched videos</span>
+        <div class="toggle" id="skipWatchedToggle"></div>
+      </div>
+      
+      <div class="setting-row">
+        <span>Use smart URL methods</span>
+        <div class="toggle active" id="getAllVideosToggle"></div>
+      </div>
+      
+      <div class="setting-row">
+        <span>Auto-mark as watched</span>
+        <div class="toggle" id="autoMarkWatchedToggle"></div>
+      </div>
+    </div>
+    
+    <div id="history-tab" class="tab-content">
+      <div class="section-title">
+        <span>Channel History</span>
+        <button class="clear-btn" id="clearHistoryBtn">Clear All</button>
+      </div>
+      <div id="channelHistory">
+        <div style="text-align: center; opacity: 0.7; font-size: 12px; padding: 20px;">
+          No channels processed yet
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html> 
