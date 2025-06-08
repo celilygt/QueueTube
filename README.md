@@ -6,7 +6,7 @@
 
 **Instantly transform any YouTube channel into a complete playlist**
 
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat&logo=google-chrome&logoColor=white)](https://github.com/yourusername/QueueTube)
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat&logo=google-chrome&logoColor=white)](https://github.com/celilygt/QueueTube)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 [Install Extension](#installation) • [How to Use](#how-to-use) • [Features](#features) • [Support](#troubleshooting)
