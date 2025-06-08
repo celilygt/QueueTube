@@ -1,11 +1,13 @@
 {
   "manifest_version": 3,
   "name": "QueueTube",
-  "version": "1.0",
-  "description": "Click a button to create a playlist of all videos from a YouTube channel's 'Videos' page with QueueTube.",
+  "short_name": "QueueTube",
+  "version": "1.0.0",
+  "description": "Instantly transform any YouTube channel into a complete playlist. Create playlists with ALL channel videos in one click - no scrolling required!",
   "permissions": ["activeTab", "scripting", "storage"],
   "action": {
     "default_popup": "popup.html",
+    "default_title": "QueueTube - Create Channel Playlists",
     "default_icon": {
       "16": "images/icon16.png",
       "48": "images/icon48.png",
@@ -22,5 +24,7 @@
       "matches": ["https://www.youtube.com/*"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "host_permissions": [],
+  "web_accessible_resources": []
 } 

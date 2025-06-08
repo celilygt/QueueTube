@@ -1,155 +1,148 @@
-# 🎬 QueueTube - YouTube Channel Playlist Generator
+<div align="center">
 
-**QueueTube** is a powerful Chrome extension that instantly creates a playlist from all videos on any YouTube channel's "Videos" tab. With just one click, transform any channel into a continuous playlist experience!
+<!-- Replace logo-placeholder.png with your actual logo -->
+<img src="images/logo-placeholder.png" alt="QueueTube Logo" width="168" height="128">
 
-## ✨ Features
 
-- 🚀 **One-Click Playlist Creation**: Generate playlists instantly from any YouTube channel
-- 📺 **Complete Channel Coverage**: Uses smart YouTube integration methods to access ALL channel videos
-- 🎯 **Smart Video Filtering**: Skip watched videos and permanently skipped videos *(Coming Soon)*
-- 👁️ **Watch History Tracking**: Keep track of videos you've already watched *(Coming Soon)*
-- 📊 **Channel History Management**: Track all channels you've processed with stats *(Coming Soon)*
-- ⚙️ **Advanced Settings**: Customizable options for video processing
-- 💫 **Beautiful Modern UI**: Tabbed interface with settings and history management
-- 🔄 **Real-time Progress**: Visual notifications show detailed progress during scanning
-- 🌟 **QueueTube Branding**: Consistent QueueTube experience throughout
+**Instantly transform any YouTube channel into a complete playlist**
+
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat&logo=google-chrome&logoColor=white)](https://github.com/yourusername/QueueTube)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+[Install Extension](#installation) • [How to Use](#how-to-use) • [Features](#features) • [Support](#troubleshooting)
+
+</div>
+
+---
+
+## ✨ What QueueTube Does
+
+QueueTube creates instant playlists from **any** YouTube channel with just one click. Unlike other tools that only grab visible videos, QueueTube uses smart discovery methods to access **ALL** channel uploads - whether there are 50 videos or 5,000.
+
+**Core Features:**
+- 🚀 **One-Click Magic**: Works from any channel page (Home, Videos, Playlists, etc.)
+- 📺 **Complete Coverage**: Gets ALL videos using YouTube's native playlist system
+- ⚡ **Instant Results**: No scrolling, no waiting - direct to full playlists
+- 🔄 **Smart Fallbacks**: Multiple methods ensure it always works
+
+**Coming Soon:**
+- 👁️ Watch history tracking
+- ⏭️ Skip watched videos
+- 📊 Channel management
+
+---
 
 ## 🛠️ Installation
 
-### Method 1: Load as Unpacked Extension (Development)
+### Load as Chrome Extension
 
-1. **Download the Extension Files**
-   - Clone or download this repository to your computer
-   - Make sure you have all files: `manifest.json`, `popup.html`, `popup.js`, `content.js`
+1. **Download the Files**
+   ```bash
+   git clone https://github.com/yourusername/QueueTube.git
+   cd QueueTube
+   ```
 
-2. **Open Chrome Extensions Page**
-   - Open Google Chrome
-   - Navigate to `chrome://extensions/`
-   - Toggle on **"Developer mode"** (top-right corner)
+2. **Install in Chrome**
+   - Open Chrome and go to `chrome://extensions/`
+   - Enable **"Developer mode"** (top-right toggle)
+   - Click **"Load unpacked"** and select the `QueueTube` folder
 
-3. **Load the Extension**
-   - Click **"Load unpacked"**
-   - Select the `QueueTube` folder containing all the extension files
-   - QueueTube should now appear in your extensions list!
+3. **Add Icons (Optional)**
+   - Add `icon16.png`, `icon48.png`, `icon128.png` to the `images/` folder
+   - See `images/create_icons.md` for guidance
 
-### Method 2: Icons (Optional but Recommended)
+---
 
-Create an `images` folder and add these icon files for the best experience:
-- `icon16.png` (16×16 pixels)
-- `icon48.png` (48×48 pixels) 
-- `icon128.png` (128×128 pixels)
+## 🎯 How to Use
 
-*Note: The extension works without icons, but will show a default puzzle piece icon.*
+1. **Visit any YouTube channel** (Home, Videos, Playlists - any tab works!)
+2. **Click the QueueTube icon** in your Chrome toolbar
+3. **Hit "🚀 Create QueueTube Playlist"**
+4. **Watch as it opens the complete channel playlist!**
 
-## 🎯 How to Use QueueTube
+That's it! QueueTube will automatically find and open a playlist with ALL the channel's videos.
 
-1. **Navigate to YouTube**
-   - Go to [youtube.com](https://youtube.com)
-   - Find any channel you want to create a playlist from
-
-2. **Visit Any Channel Page**
-   - Click on the channel name to visit their channel page
-   - You can be on **any** tab: Home, Videos, Playlists, Community, etc.
-
-3. **Configure QueueTube (Optional)**
-   - Click the QueueTube icon in your Chrome toolbar
-   - Switch to the **Settings** tab to configure:
-     - **Skip watched videos**: Exclude videos you've already seen *(Coming Soon)*
-     - **Use smart URL methods**: Try multiple YouTube URL patterns (recommended)
-     - **Auto-mark as watched**: Automatically track videos in created playlists *(Coming Soon)*
-
-4. **Launch QueueTube**
-   - Click **"🚀 Create QueueTube Playlist"**
-   - QueueTube will use smart playlist discovery methods to access ALL channel videos
-   - Progress notifications keep you updated with real-time stats
-
-5. **Manage Your History** *(Coming Soon)*
-   - Switch to the **History** tab to see all processed channels
-   - View stats: watched videos, skipped videos, total videos
-   - **Refresh** a channel to reset watched/skipped status
-   - **Delete** channels from your history when needed
+---
 
 ## 🔧 Technical Details
 
 ### File Structure
 ```
 QueueTube/
-├── manifest.json          # Extension configuration
-├── popup.html            # Popup interface
-├── popup.js              # Popup functionality
-├── content.js            # YouTube page interaction
+├── manifest.json          # Extension config (with storage permission)
+├── popup.html            # Main interface
+├── popup.js              # Settings & controls
+├── content.js            # YouTube integration
 ├── images/               # Extension icons
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
 └── README.md             # This file
 ```
 
 ### Permissions Used
-- **activeTab**: Access to the current YouTube tab
-- **scripting**: Inject content script for video scanning
+- **activeTab**: Access current YouTube page
+- **scripting**: Inject playlist discovery code
+- **storage**: Save settings and channel history *(Coming Soon)*
 
-### Browser Compatibility
-- Chrome (Manifest V3)
-- Microsoft Edge
-- Other Chromium-based browsers
-
-## 🎥 What QueueTube Does
-
-1. **Smart Channel Detection**: Works from any channel page (Home, Videos, Playlists, etc.)
-2. **Playlist Discovery**: Uses multiple YouTube integration methods to find complete playlists
-3. **Upload Playlist Access**: Automatically finds and accesses channel upload playlists
-4. **Fallback Methods**: Multiple strategies ensure playlist creation always works
-5. **Direct Navigation**: Redirects to complete playlists with ALL channel videos
-6. **Real-time Feedback**: Progress notifications keep you informed throughout the process
-
-## 🚨 Current Limitations
-
-### Features Under Development
-- **Watch History Tracking**: The extension currently doesn't save which videos you've watched
-- **Skip Watched Videos**: This setting is visible but not yet functional
-- **Channel History Management**: The History tab shows channels but buttons may not work reliably
-- **Auto-mark as Watched**: This feature is not yet implemented
-
-### Working Features
-- ✅ **Playlist Creation**: Core functionality works perfectly
-- ✅ **All Channel Videos**: Gets complete channel uploads, not just visible ones
-- ✅ **Multiple Methods**: Falls back gracefully if one method doesn't work
-- ✅ **Real-time Notifications**: Shows progress during playlist creation
-
-## 🚨 Troubleshooting
-
-### "No videos found" Error
-- Make sure you're on any **channel page** (Home, Videos, Playlists, etc.)
-- Try refreshing the page and waiting for it to fully load
-- Some channels may have their videos in different sections
-
-### Extension Not Working
-- Verify all files are in the same folder
-- Check that Developer mode is enabled in Chrome
-- Try reloading the extension in `chrome://extensions/`
-
-### Playlist Too Long
-- YouTube has limits on playlist URLs (~200 videos typically work)
-- For channels with 1000+ videos, the URL might be too long
-- QueueTube will try to use YouTube's native playlist system to handle this
-
-## 🤝 Contributing
-
-Want to improve QueueTube? Feel free to:
-- Report bugs or issues
-- Suggest new features
-- Submit pull requests
-- Share feedback
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🌟 Enjoy QueueTube!
-
-Transform any YouTube channel into your personal playlist with QueueTube. Happy watching! 🍿
+### How It Works
+1. **Channel Detection**: Identifies current channel from any page
+2. **Playlist Discovery**: Finds channel's upload playlist using multiple methods
+3. **Smart Fallbacks**: Tries "Play All" buttons, upload playlists, and direct navigation
+4. **Instant Launch**: Redirects to complete playlist automatically
 
 ---
 
-*Created with ❤️ for YouTube enthusiasts who love binge-watching entire channels.* 
+## 🚨 Current Status
+
+### ✅ Working Features
+- **Playlist Creation**: Core functionality works perfectly
+- **All Videos Access**: Gets complete uploads, not just visible ones
+- **Smart Detection**: Works from any channel page
+- **Multiple Methods**: Graceful fallbacks if one method fails
+
+### 🔄 Coming Soon
+- **Watch History**: Track which videos you've seen
+- **Smart Filtering**: Skip watched/unwanted videos
+- **Channel Management**: Organize your channel history
+
+---
+
+## 🚨 Troubleshooting
+
+**Extension Not Working?**
+- Ensure Developer mode is enabled in `chrome://extensions/`
+- Try reloading the extension
+- Check that all files are in the same folder
+
+**"No videos found"?**
+- Make sure you're on a channel page (not a single video)
+- Try refreshing the page
+- Some new channels might not have established playlists yet
+
+**Playlist Too Large?**
+- QueueTube uses YouTube's native system to handle large playlists
+- Very large channels (5000+ videos) may take a moment to load
+
+---
+
+## 🤝 Contributing
+
+Found a bug? Have a feature idea? Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
+
+---
+
+## 📄 License
+
+MIT License - feel free to use and modify!
+
+---
+
+<div align="center">
+
+**Made with ❤️ for YouTube enthusiasts who love binge-watching entire channels**
+
+[⭐ Star this repo](https://github.com/yourusername/QueueTube) if QueueTube helps you discover amazing content!
+
+</div> 
