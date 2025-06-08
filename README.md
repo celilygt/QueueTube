@@ -34,7 +34,13 @@ QueueTube creates instant playlists from **any** YouTube channel with just one c
 
 ## 🛠️ Installation
 
-### Load as Chrome Extension
+### 🚀 Chrome Web Store (Coming Soon!)
+
+QueueTube will be available on the Chrome Web Store very soon! I'm currently preparing the final store assets and going through the review process.
+
+**In the meantime**, you can try QueueTube by loading it manually:
+
+### Load as Chrome Extension (Developer Version)
 
 1. **Download the Files**
    ```bash
@@ -47,9 +53,11 @@ QueueTube creates instant playlists from **any** YouTube channel with just one c
    - Enable **"Developer mode"** (top-right toggle)
    - Click **"Load unpacked"** and select the `QueueTube` folder
 
-3. **Add Icons (Optional)**
-   - Add `icon16.png`, `icon48.png`, `icon128.png` to the `images/` folder
-   - See `images/create_icons.md` for guidance
+3. **You're Ready!**
+   - The QueueTube icon should appear in your Chrome toolbar
+   - Visit any YouTube channel and give it a try!
+
+**Want to be notified when it's live on the Chrome Web Store?** [⭐ Star this repository](https://github.com/yourusername/QueueTube) to stay updated!
 
 ---
 
